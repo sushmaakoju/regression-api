@@ -1,0 +1,80 @@
+{
+    "__type__": "ModelParameters",
+    "svr_params_obj": {
+        "minC": 0.5,
+        "maxC": 50.0,
+        "minEpsilon": 0.0,
+        "maxEpsilon": 0.9,
+        "svr_list_c": [
+            0.5,
+            5.5,
+            10.5,
+            15.5,
+            20.5,
+            25.5,
+            30.5,
+            35.5,
+            40.5,
+            45.5
+        ],
+        "svr_list_espilon": [
+            0.0,
+            0.2,
+            0.4,
+            0.6000000000000001,
+            0.8
+        ],
+        "kernel": [
+            "linear",
+            "rbf",
+            "poly",
+            "sigmoid",
+            "precomputed"
+        ]
+    },
+    "rfr_params_obj": {
+        "minEstimators": 10,
+        "maxEstimators": 100,
+        "maxFeatures": [
+            "auto",
+            "0.8"
+        ],
+        "maxDepthLowerLimit": 2,
+        "maxDepthUpperLimit": 10,
+        "rfr_list_n_estimators": [
+            10,
+            20,
+            30,
+            40,
+            50,
+            60,
+            70,
+            80,
+            90
+        ],
+        "rfr_max_features": [
+            "auto",
+            "sqrt",
+            "log2",
+            "0.8"
+        ],
+        "rfr_max_depth": [
+            2,
+            4,
+            6,
+            8
+        ]
+    },
+    "lasso_params_obj": {
+        "minAlpha": -10.0,
+        "maxAlpha": 1.5,
+        "lasso_n_alphas": 10000,
+        "lasso_max_iter": 10000000
+    },
+    "br_params_obj": {
+        "alpha_1": null,
+        "alpha_2": null,
+        "lambda_1": null,
+        "lambda_2": null
+    }
+}

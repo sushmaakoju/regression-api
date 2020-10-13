@@ -71,13 +71,13 @@ def serve_layout():
                         children=list(plotsobj.plots['br'].values())),
                     html.Div(className='mat-card', style={"display": "block", "margin":"30px",
                     "border":"1px solid lightgrey"},
-                        children=list(plotsobj.plots['rmse'])),
+                        children=[plotsobj.plots['rmse']]),
                     html.Div(className='mat-card', style={"display": "block", "margin":"30px",
                     "border":"1px solid lightgrey"},
-                        children=list(plotsobj.plots['r2'])),
+                        children=[plotsobj.plots['r2']]),
                     html.Div(className='mat-card', style={"display": "block", "margin":"30px",
                     "border":"1px solid lightgrey"},
-                        children=list(plotsobj.plots['ev'])),
+                        children=[plotsobj.plots['ev']]),
                 ], className='main-card', style={"display": "block", "margin":"30px", 
                  "border":"1px solid lightgrey"})
     return html.Div([
