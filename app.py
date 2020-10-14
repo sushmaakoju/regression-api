@@ -109,6 +109,16 @@ reg_obj.populate_fixtures('')
 def start():
     return jsonify({'result':"Welcome to Regression api!"})
 
+@app.route('/upload_data', methods=['POST'])
+def preprocess_data():
+     print(request.json)
+
+@app.route('/select_params', methods=['POST'])
+def select_params():
+     json_ = request.json # all parameters from parameters form in UI
+     model_params_obj = reg_obj.populate_fixtures(json_)
+     return jsonify({'status': "completed"}) #later send json scores to plot using chartjs 
+
 @api.route('/train_all', methods=['POST'])
 def train_all():
     #test default
