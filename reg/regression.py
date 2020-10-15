@@ -46,11 +46,14 @@ def storeInQueue(f):
 class Regression():
     def __init__(self, plotsobj):
         #input data initialization : columns names (defaults)
-        self.some_columns= ['test']
-        self.X_columns = ['test']
-        self.y_column = ['test']
+        #self.some_columns= ['latitude']
+        self.X_columns = ['X1 transaction date','X2 house age',
+        'X3 distance to the nearest MRT station',
+        'X4 number of convenience stores','X5 latitude', 'X6 longitude']
+        self.y_column = ['Y house price of unit area']
 
-        self.filepath = r'test.xlsx'
+        self.filepath = r'realestate.xls'
+        self.excelfile = pd.ExcelFile(self.filepath)
         # preprocessed input data initialization
         self.X = pd.DataFrame()
         self.y = pd.DataFrame()
@@ -85,13 +88,16 @@ class Regression():
     def set_X(self, X_columns):
         self.X_columns = X_columns
 
+    def set_selected_file(self, filepath):
+        self.excelfile = pd.ExcelFile(filepath)
+        self.filepath =  filepath
+
     # get sheets, 
     def get_data_from_user(self, filepath):
-        self.filepath = r'uhpc_test.xlsx' 
+        self.filepath = r'realestate.xls' 
         #replace all_columns with individual dropdown values
-        all_columns = [self.X_columns, self.y_column, self.some_columns]
-        excelfile = pd.ExcelFile(self.filepath)
-        sheets_list = excelfile.sheet_names
+        all_columns = [self.X_columns, self.y_column]
+        sheets_list = self.excelfile.sheet_names
         print(all_columns)
         excels = list()
         for sheet, columns in zip(sheets_list, all_columns):
@@ -99,6 +105,8 @@ class Regression():
             print(pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True)[columns])
             excels.append(pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True)[columns])
         self.dataframe = pd.concat(excels, axis=1)
+        
+        print(self.dataframe)
 
     def clean_data(self):
         print(type(self.dataframe))
