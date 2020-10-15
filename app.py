@@ -109,15 +109,29 @@ reg_obj.populate_fixtures('')
 def start():
     return jsonify({'result':"Welcome to Regression api!"})
 
-@app.route('/upload_data', methods=['POST'])
+@api.route('/upload_data', methods=['POST'])
 def preprocess_data():
-     print(request.json)
+    try:
+        reg_obj.set_selected_file(request.files['file'])
+    except:
+        raise Exception("Invalid file type")
+    print(request.files['file'])
+    return jsonify({'ready': "uploaded data file"}) 
 
-@app.route('/select_params', methods=['POST'])
+@api.route('/select_columns', methods=['POST'])
+def select_columns():
+     columns = json.loads(request.data.decode('utf-8'))
+     print(request, columns)
+     reg_obj.set_X(columns['features'])
+     reg_obj.set_y(columns['response'])
+     reg_obj.get_data_from_user()
+     return jsonify({'status': "completed"}) #later send json va;ues to plot using chartjs 
+
+@api.route('/select_params', methods=['POST'])
 def select_params():
-     json_ = request.json # all parameters from parameters form in UI
+     json_ = request.data # all parameters from parameters form in UI
      model_params_obj = reg_obj.populate_fixtures(json_)
-     return jsonify({'status': "completed"}) #later send json scores to plot using chartjs 
+     return jsonify({'status': "completed"}) #later send json values to plot using chartjs 
 
 @api.route('/train_all', methods=['POST'])
 def train_all():
