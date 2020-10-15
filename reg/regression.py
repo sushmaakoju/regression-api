@@ -47,12 +47,15 @@ class Regression():
     def __init__(self, plotsobj):
         #input data initialization : columns names (defaults)
         #self.some_columns= ['latitude']
-        self.X_columns = ['X1 transaction date','X2 house age',
-        'X3 distance to the nearest MRT station',
-        'X4 number of convenience stores','X5 latitude', 'X6 longitude']
-        self.y_column = ['Y house price of unit area']
+        self.X_columns = ['Cement (component 1)(kg in a m^3 mixture)',
+        'Blast Furnace Slag (component 2)(kg in a m^3 mixture)',
+        'Fly Ash (component 3)(kg in a m^3 mixture)','Water  (component 4)(kg in a m^3 mixture)',
+        'Superplasticizer (component 5)(kg in a m^3 mixture)', 'Coarse Aggregate  (component 6)(kg in a m^3 mixture)',	
+        'Fine Aggregate (component 7)(kg in a m^3 mixture)', 'Age (day)']
 
-        self.filepath = r'realestate.xls'
+        self.y_column = ['Concrete compressive strength(MPa, megapascals) ']
+
+        self.filepath = r'concrete_data.xls'
         self.excelfile = pd.ExcelFile(self.filepath)
         # preprocessed input data initialization
         self.X = pd.DataFrame()
@@ -94,7 +97,7 @@ class Regression():
 
     # get sheets, 
     def get_data_from_user(self, filepath):
-        self.filepath = r'realestate.xls' 
+        self.filepath = r'concrete_data.xls' 
         #replace all_columns with individual dropdown values
         all_columns = [self.X_columns, self.y_column]
         sheets_list = self.excelfile.sheet_names

@@ -61,16 +61,27 @@ install following python requirements.
     - Download and install postman https://www.postman.com/downloads/
     - Configure requests in Postman as follows:
         - Create a New Collection "Regression-API" and create a New request with following url, request type
-        <img src="https://user-images.githubusercontent.com/8979477/96176563-88859200-0efa-11eb-8776-950af9fbca0c.png" width="600" height="300">
+        <img src="https://user-images.githubusercontent.com/8979477/96185356-c63ce780-0f07-11eb-8a88-436925bc85ec.PNG" width="600" height="300">
         
         - Create request for each of following Api URLS:
-            - http://127.0.0.1:8050/train_hmlrfr
-            - http://127.0.0.1:8050/train_hmlgpr
-            - http://127.0.0.1:8050/optimize 
+            - http://127.0.0.1:8050/ 
+            - http://127.0.0.1:8050/train_dtr
+            - http://127.0.0.1:8050/train_svr
+            - http://127.0.0.1:8050/train_lr
+            - http://127.0.0.1:8050/train_rfr
+            - http://127.0.0.1:8050/train_br 
+
         - Assuming you started api using start_api script from previous step, Click "Send" from postman for one of requests and see if request is successfully.
 - Once you run any one of above results, navigate to http://127.0.0.1:8050/results/ to see Dashboard.
   The dashboard should look like this:
-    <img src="https://user-images.githubusercontent.com/8979477/96177069-49a40c00-0efb-11eb-9f1e-521391d0f62b.PNG" width="600" height="300">
+    <embed src="https://github.com/sushmaakoju/regression-api/blob/main/regression-api-dashboard.pdf" type="application/pdf" width="600" height="300">
+
+    <img src="https://user-images.githubusercontent.com/8979477/96185358-c63ce780-0f07-11eb-84d0-d36cb289f772.PNG" width="600" height="300">
+
+- Dataset credits:
+    - https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/compressive/ 
+    - https://archive.ics.uci.edu/ml/datasets/Concrete+Compressive+Strength 
+
 
 ### Pre-requisites to Start the API
 #### Install Spark 3.0.1
