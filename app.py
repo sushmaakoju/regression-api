@@ -101,8 +101,8 @@ dash_app = dash.Dash(
 
 dash_app.layout = serve_layout
 reg_obj =  Regression(plotsobj)
+reg_obj.set_selected_file(r'concrete_data.xls')
 reg_obj.get_data_from_user("")
-reg_obj.clean_data()
 reg_obj.populate_fixtures('')
 
 @api.route("/")
@@ -137,8 +137,8 @@ def select_params():
 def train_all():
     #test default
     results = {}
+    reg_obj.set_selected_file(r'concrete_data.xls')
     reg_obj.get_data_from_user("")
-    reg_obj.clean_data()
     reg_obj.populate_fixtures('')
     t = threading.Thread(target=reg_obj.decisiontreeregr())
     t.start()

@@ -46,7 +46,6 @@ def storeInQueue(f):
 class Regression():
     def __init__(self, plotsobj):
         #input data initialization : columns names (defaults)
-        #self.some_columns= ['latitude']
         self.X_columns = ['Cement (component 1)(kg in a m^3 mixture)',
         'Blast Furnace Slag (component 2)(kg in a m^3 mixture)',
         'Fly Ash (component 3)(kg in a m^3 mixture)','Water  (component 4)(kg in a m^3 mixture)',
@@ -68,6 +67,9 @@ class Regression():
         self.features = []
         self.response_column_name = ""
         self.dataframe = None
+        self.excels = None
+        self.feature_sheet = "layer"
+        self.response_sheet = "output"
 
         # scaler initialization
         self.standardy = StandardScaler()
@@ -92,30 +94,21 @@ class Regression():
         self.X_columns = X_columns
 
     def set_selected_file(self, filepath):
-        self.excelfile = pd.ExcelFile(filepath)
+        if filepath != "":
+            self.filepath = filepath
+        self.excelfile = pd.ExcelFile(self.filepath)
+        sheets_list = self.excelfile.sheet_names
+        self.excels = dict()
+        for sheet in sheets_list:
+            #print(pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True))
+            self.excels[sheet] = pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True)
         self.filepath =  filepath
-
+        
     # get sheets, 
     def get_data_from_user(self, filepath):
-        self.filepath = r'concrete_data.xls' 
-        #replace all_columns with individual dropdown values
-        all_columns = [self.X_columns, self.y_column]
-        sheets_list = self.excelfile.sheet_names
-        print(all_columns)
-        excels = list()
-        for sheet, columns in zip(sheets_list, all_columns):
-            print(sheet, columns)
-            print(pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True)[columns])
-            excels.append(pd.read_excel(self.filepath, sheet_name=sheet, mangle_dupe_cols=True)[columns])
-        self.dataframe = pd.concat(excels, axis=1)
+        self.X = self.excels[self.feature_sheet][self.X_columns]
+        self.y = self.excels[self.response_sheet][self.y_column]
         
-        print(self.dataframe)
-
-    def clean_data(self):
-        print(type(self.dataframe))
-        print(self.dataframe.columns.values)
-        self.X = self.dataframe[self.X_columns]
-        self.y = self.dataframe[self.y_column]
         self.y = self.y.round(4)
         self.X = self.X.round(4)
         self.df = pd.DataFrame()
