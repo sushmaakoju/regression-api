@@ -1,6 +1,10 @@
-# regression-api Feb 2020 - Oct 2020, for a project as a Senior Research Programmer.
+# regression-api 
+## Feb 2020 - Oct 2020, Role: Senior Research Programmer
 
 Flask API is used to train regression models and results displayed on the dashboard.
+
+### Code of conduct
+Resources were used for specific literature/code, it is provided in the respective implementation file. The code provided here is implicitly expected not to be replicated for homeworks, assignments or any other programming work. It is welcome to take inspiration, but it is implicitly expected to cite this resource if used for learning, inspiration purposes. Please refer <a href="https://github.com/sushmaakoju/regression-api/blob/main/CODE_OF_CONDUCT.md">code of conduct</a>.
 
 # regression-api-demo
 This is a repository for Regression algorithms using scikit-learn and displays the results using Plotly/Dash interactive plots and a dashboard.
