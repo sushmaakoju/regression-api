@@ -1,8 +1,9 @@
-# regression-api
-Flask API for training Regression models and displating plotly dashboard.
+# regression-api Feb 2020 - Oct 2020, for a project as a Senior Research Programmer.
+
+Flask API is used to train regression models and results displayed on the dashboard.
 
 # regression-api-demo
-This is a repository for Regression algorithms using scikit-learn and display results using Plotly/Dash interactive plots and a dahsboard.
+This is a repository for Regression algorithms using scikit-learn and displays the results using Plotly/Dash interactive plots and a dashboard.
 
 ### Steps to install
 
